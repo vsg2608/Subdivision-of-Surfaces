@@ -14,6 +14,7 @@ import org.lwjgl.util.vector.Matrix4f;
 import shaders.StaticShader;
 import shaders.TerrainShader;
 import skybox.SkyboxRenderer;
+import subDivision.subDivisionObject;
 import terrain.Terrain;
 import entities.Camera;
 import entities.Entity;
@@ -42,9 +43,10 @@ public class MasterRenderer {
 	
 	private Map<TexturedModel,List<Entity>> entities = new HashMap<TexturedModel,List<Entity>>();
 	private List<Terrain> terrains = new ArrayList<Terrain>();
+	private List<subDivisionObject> objects = new ArrayList<subDivisionObject>();
 	
 	public MasterRenderer(Loader loader){
-		GL11.glEnable(GL11.GL_CULL_FACE);
+//		GL11.glEnable(GL11.GL_CULL_FACE);
 		GL11.glCullFace(GL11.GL_BACK);
 		createProjectionMatrix();
 		renderer = new EntityRenderer(shader,projectionMatrix);
@@ -73,6 +75,10 @@ public class MasterRenderer {
 	
 	public void processTerrain(Terrain terrain){
 		terrains.add(terrain);
+	}
+	
+	public void processSubObject(subDivisionObject object) {
+		objects.add(object);
 	}
 	
 	public void processEntity(Entity entity){

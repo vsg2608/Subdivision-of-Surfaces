@@ -9,7 +9,7 @@ public class Camera {
 	private float distanceFromPlayer = 50;
 	private float angleAroundPlayer = 0;
 	
-	private Vector3f position = new Vector3f(0,0,0);
+	private static Vector3f position = new Vector3f(0,0,0);
 	private float pitch =20;
 	private float yaw;
 	private float roll;
@@ -30,7 +30,7 @@ public class Camera {
 		this.yaw=-player.getRotY()  - angleAroundPlayer +180;
 	}
 
-	public Vector3f getPosition() {
+	public static Vector3f getPosition() {
 		return position;
 	}
 
